@@ -1,6 +1,6 @@
 # Shower
 
-Shower allows the creation of an unlimited number of event streams through a single connection!  Server side events have never been easier.
+Shower allows the creation of an unlimited number of event streams through a single connection!  Server side events have never been easier and more efficient.  Since there is no needed to persist a database connection, the amount of concurrent users is only limited by your Rails server.
 
 ## Requirements
 
