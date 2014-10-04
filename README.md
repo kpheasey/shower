@@ -1,6 +1,17 @@
 # Shower
 
-Shower allows the creation of an unlimited number of event streams through a single connection!
+Shower allows the creation of an unlimited number of event streams through a single connection!  Server side events have never been easier.
+
+## Requirements
+
+### Multithreaded Server
+
+As with any application wishing to use ```ActionController::Live```, a multithreaded server is required.  I recommend, [Puma](http://puma.io/), it's open source and free.  [Passenger Enterprise](https://www.phusionpassenger.com/enterprise) is another option, it's a little simpler to setup then Puma.
+
+
+### Redis
+A Redis server must be installed and running.  Messages are pushed to a Redis server, where the ```Shower::StreamController``` then picks them up and pushes them to the event stream.  Because of this, the event stream does not need a database connection!
+
 
 ## Installation
 
