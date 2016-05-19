@@ -23,9 +23,15 @@ And then execute:
 
     $ bundle
     
-After bundling you need to run the initial installation generator:
+After bundling you need to run the initial installation generator for javascript client usage:
 
     $ rails g shower:install
+
+## Configuration
+
+Create `config/initializers/redis.rb` and configure Redis connection:
+    
+    $redis = Redis.new(host: '127.0.0.1', port: 6379)
 
 ## Usage
 ### Publishing
@@ -35,6 +41,14 @@ JSON using ```to_json```.
 
     Shower::Stream.publish('message.new', { username: 'anon', message: 'hello!' })
 
+### Subscription
+
+Subscribing to an event stream on server side.
+
+    Shower::Stream.subscribe(['message.new']) do |event, data| 
+      # do something with event
+      # do something with data
+    end
 
 ### Listening
 

@@ -9,5 +9,16 @@ module Shower
       $redis.publish(event, message.to_json)
     end
 
+    # Yield event and data back to subscribed entity
+    #
+    # @param [Array] events
+    def self.subscribe(events)
+      $redis.subscribe(events << 'heartbeat') do |on|
+        on.message do |event, data|
+          yield(event, data)
+        end
+      end
+    end
+
   end
 end
